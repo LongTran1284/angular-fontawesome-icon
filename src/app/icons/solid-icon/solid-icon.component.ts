@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome'; 
-import { fas } from '@fortawesome/free-solid-svg-icons'; 
-import { MainService } from '../../services/main.service'; 
-import { EventService } from '../../services/EventService';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
+import { MainService } from '../../services/main.service'; 
+import { EventService } from '../../services/EventService';
 import { ItemComponent } from '../item/item.component';
 
 @Component({
@@ -12,7 +11,6 @@ import { ItemComponent } from '../item/item.component';
   standalone: true,
   imports: [
     CommonModule,  
-    FontAwesomeModule,
     ItemComponent
   ],
   template: `
@@ -26,18 +24,15 @@ import { ItemComponent } from '../item/item.component';
   styleUrl: './solid-icon.component.css'
 })
 export class SolidIconComponent {
-  icon_list: any[] = []
+  @Input() icon_list: any[] = []
 
   constructor(
     private mainService: MainService,
     private eventService: EventService,
-    private route: ActivatedRoute,
-    private library: FaIconLibrary
+    private route: ActivatedRoute,    
     ){
-      this.eventService.emitt('updateTitle', this.route.snapshot.title)
-      this.library.addIconPacks(fas)
-      this.icon_list = this.mainService.getIconList(fas)
+      this.eventService.emitt('updateTitle', this.route.snapshot.title)      
+      this.icon_list = this.mainService.solid_icons
   }
-
 
 }

@@ -64,6 +64,19 @@ import pkg from '../../../package.json'
           </div>          
         </div>
       </div>
+
+      <div class="accordion-item">
+        <div class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#new">
+            <h3>New 2024: Using customized library lg-icons</h3>
+          </button>
+        </div>
+        <div id="new" class="accordion-collapse collapse " >
+          <div class="accordion-body">            
+            <div class="content">{{ new2024 }}</div>            
+          </div>          
+        </div>
+      </div>
     </div>
     
 
@@ -132,6 +145,29 @@ export class HomeComponent {
     constructor(private library: FaIconLibrary){
       this.library.addIconPacks(fas, far, fab)      
     }
+  `
+  new2024: string =
+  `** Install the lg-icons library:
+
+  npm install ./ANGULAR/MyLibrary/lg-icons-0.0.1.tgz
+  
+  ** import the library:
+
+  import { LgIconLibrary } from 'lg-icons';
+  @Component({
+    [...]
+    imports: [
+      LgIconLibrary, 
+      ...
+    ],
+
+  ** using library:
+
+  <lg-icon family="solid" name="trash-can"></lg-icon>
+
+  family default name is 'solid', we can choose 'regular' or 'brand'
+  name is svg name, refer to this webapp.
+
   `
 
   constructor(
